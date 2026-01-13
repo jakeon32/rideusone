@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>스키리조트 - RIDEUS</title>
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#4ECDC4', // Mint Blue
+                        primaryHover: '#3EB9B1',
+                        secondary: '#FF6B35', // Coral Orange
+                        accent: '#FFE66D',
+                        success: '#95E1D3',
+                    },
+                    fontFamily: {
+                        sans: ['Pretendard', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://unpkg.com/lucide@latest"></script>
+</head>
+
+<body class="min-h-screen bg-slate-50 text-slate-900 font-sans selection:bg-orange-100 selection:text-orange-900">
+
+    <!-- Navigation -->
+    <nav id="main-nav" class="fixed top-0 w-full z-50 transition-all duration-300 bg-transparent">
+        <div class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
+            <div class="flex items-center space-x-10">
+                <a href="index.html">
+                    <img src="./images/rideuslogo.png" alt="RIDEUS"
+                        class="h-8 md:h-10 cursor-pointer object-contain brightness-0 invert transition-all"
+                        id="main-logo" />
+                </a>
+                <!-- Desktop Menu -->
+                <div id="nav-links"
+                    class="hidden md:flex items-center space-x-8 text-[15px] font-bold text-white transition-colors duration-300">
+                    <a href="index.html" class="hover:text-primary transition">홈</a>
+                    <a href="theme-park.html" class="hover:text-primary transition">테마파크</a>
+                    <a href="ski-resort.html" class="text-primary transition">스키리조트</a>
+                    <a href="concert.html" class="hover:text-primary transition">공연/이벤트</a>
+                    <a href="custom-tour.html" class="hover:text-primary transition">커스텀투어</a>
+                </div>
+            </div>
+
+            <div class="flex items-center space-x-4">
+                <div id="lang-selector"
+                    class="hidden lg:flex items-center space-x-1 text-sm font-bold border rounded-full px-4 py-1.5 transition border-white/30 text-white hover:bg-white/10 cursor-pointer">
+                    <i data-lucide="globe" class="w-4 h-4"></i>
+                    <span>한국어</span>
+                    <span class="mx-1">|</span>
+                    <span>KRW</span>
+                </div>
+                <i id="menu-icon" data-lucide="menu"
+                    class="md:hidden w-6 h-6 cursor-pointer text-white transition-colors duration-300"
+                    onclick="openMenu()"></i>
+                <div id="mobile-menu-btn" class="hidden w-6 h-6"></div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section (Compact) -->
+    <section class="relative h-[50vh] flex items-center justify-center">
+        <div class="absolute inset-0 bg-gradient-to-br from-[#FF6B35]/20 to-[#4ECDC4]/20">
+            <img src="./images/private_van_ski.png" class="w-full h-full object-cover opacity-90" alt="Ski Resort" />
+            <div class="absolute inset-0 bg-black/30"></div>
+        </div>
+        <div class="relative z-10 text-center px-6 max-w-4xl mt-10">
+            <h1 class="text-4xl md:text-5xl font-bold text-white mb-4 drop-shadow-md">
+                설원 위를 달리는 자유
+            </h1>
+            <p class="text-lg md:text-xl text-white/90 drop-shadow-sm font-medium">
+                전국 인기 스키장 셔틀 & 프라이빗 이동 서비스
+            </p>
+        </div>
+    </section>
+
+    <!-- Sticky Category Tabs -->
+    <div id="sticky-tabs"
+        class="sticky top-0 z-40 bg-white border-b border-gray-100 shadow-sm transition-transform duration-300 transform translate-y-0">
+        <div class="max-w-7xl mx-auto px-6 overflow-x-auto no-scrollbar">
+            <div class="flex items-center justify-center space-x-4 h-16 whitespace-nowrap text-[15px] font-bold">
+                <a href="index.html"
+                    class="text-gray-500 hover:text-primary hover:bg-gray-50 px-6 py-2.5 rounded-full transition-all">전체</a>
+                <a href="theme-park.html"
+                    class="text-gray-500 hover:text-primary hover:bg-gray-50 px-6 py-2.5 rounded-full transition-all">테마파크</a>
+                <a href="ski-resort.html"
+                    class="bg-primary text-white px-6 py-2.5 rounded-full shadow-md hover:bg-primaryHover transition-all">스키리조트</a>
+                <a href="concert.html"
+                    class="text-gray-500 hover:text-primary hover:bg-gray-50 px-6 py-2.5 rounded-full transition-all">공연/이벤트</a>
+                <a href="shopping.html"
+                    class="text-gray-500 hover:text-primary hover:bg-gray-50 px-6 py-2.5 rounded-full transition-all">쇼핑</a>
+                <a href="custom-tour.html"
+                    class="text-gray-500 hover:text-primary hover:bg-gray-50 px-6 py-2.5 rounded-full transition-all">커스텀투어</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Product List Section -->
+    <section class="max-w-7xl mx-auto px-6 py-20">
+        <div class="text-center mb-12">
+            <h2 class="text-3xl font-bold text-gray-900 mb-4">
+                무거운 장비도 OK,<br />수도권 주요 거점 매일 출발
+            </h2>
+            <p class="text-lg text-gray-600">
+                합리적인 <strong>셔틀버스</strong>부터 우리끼리 떠나는 <strong>프라이빗 밴</strong>까지 모두 준비되어 있습니다
+            </p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-20">
+
+            <!-- Product 1: Vivaldi Park -->
+            <div
+                class="bg-white rounded-2xl shadow-lg overflow-hidden hover:shadow-xl transition-all group cursor-pointer border border-slate-100">
+                <div class="relative h-64 overflow-hidden">
+                    <img src="./images/shuttle_vivaldi.png"
+                        class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                        alt="Vivaldi Park" />
+                    <div class="absolute top-4 left-4">
+                        <span
+                            class="inline-flex items-center px-3 py-1 rounded-full text-xs font-bold bg-purple-600 text-white shadow-lg">
+                            인기 1위
+                        </span>
+                    </div>
+                </div>
+                <div class="p-6">
+                    <div class="text-xs font-bold text-primary mb-2">비발디파크 · 홍천</div>
+                    <h3 class="text-xl font-bold text-slate-900 mb-2 group-hover:text-primary transition-colors">
+                        비발디파크 셔틀버스
+                    </h3>
+                    <p class="text-slate-500 text-sm mb-6 line-clamp-2">
+                        수도권 최다 노선 운영. 가장 가까운 스키장으로 편안하게 떠나세요.
+                    </p>
+                    <div class="flex items-center justify-between pt-4 border-t border-slate-100">
+                        <span class="text-slate-900 font-bold text-lg">9,000원~</span>
+                        <button class="text-primary font-bold text-sm flex items-center hover:underline">
+                            예약하기 <i data-lucide="arrow-right" class="w-4 h-4 ml-1"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Product 2: Mona Yongpyong -->
+            <div
+                class="bg-white rounded-2xl shadow-lg overflow-hidden hover:shadow-xl transition-all group cursor-pointer border border-slate-100">
+                <div class="relative h-64 overflow-hidden">
+                    <img src="./images/mona.jpg"
+                        class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                        alt="Mona Yongpyong" />
+                </div>
+                <div class="p-6">
+                    <div class="text-xs font-bold text-primary mb-2">모나 용평 · 평창</div>
+                    <h3 class="text-xl font-bold text-slate-900 mb-2 group-hover:text-primary transition-colors">
+                        모나 용평 리조트 시즌 셔틀
+                    </h3>
+                    <p class="text-slate-500 text-sm mb-6 line-clamp-2">
+                        대한민국 스키의 성지. 종합운동장, 서울역 등 주요 거점 매일 출발.
+                    </p>
+                    <div class="flex items-center justify-between pt-4 border-t border-slate-100">
+                        <span class="text-slate-900 font-bold text-lg">18,000원~</span>
+                        <button class="text-primary font-bold text-sm flex items-center hover:underline">
+                            예약하기 <i data-lucide="arrow-right" class="w-4 h-4 ml-1"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Product 3: Alpensia -->
+            <div
+                class="bg-white rounded-2xl shadow-lg overflow-hidden hover:shadow-xl transition-all group cursor-pointer border border-slate-100">
+                <div class="relative h-64 overflow-hidden">
+                    <img src="./images/alpen.jpg"
+                        class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                        alt="Alpensia" />
+                </div>
+                <div class="p-6">
+                    <div class="text-xs font-bold text-primary mb-2">알펜시아 · 평창</div>
+                    <h3 class="text-xl font-bold text-slate-900 mb-2 group-hover:text-primary transition-colors">
+                        평창 알펜시아 셔틀버스
+                    </h3>
+                    <p class="text-slate-500 text-sm mb-6 line-clamp-2">
+                        설경이 아름다운 평창으로. 프라이빗 밴 예약 시 장비 렌탈 추가 할인.
+                    </p>
+                    <div class="flex items-center justify-between pt-4 border-t border-slate-100">
+                        <span class="text-slate-900 font-bold text-lg">18,000원~</span>
+                        <button class="text-primary font-bold text-sm flex items-center hover:underline">
+                            예약하기 <i data-lucide="arrow-right" class="w-4 h-4 ml-1"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Product 4: Ramada Pyeongchang -->
+            <div
+                class="bg-white rounded-2xl shadow-lg overflow-hidden hover:shadow-xl transition-all group cursor-pointer border border-slate-100">
+                <div class="relative h-64 overflow-hidden">
+                    <img src="./images/ramada.jpg"
+                        class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                        alt="Ramada" />
+                </div>
+                <div class="p-6">
+                    <div class="text-xs font-bold text-primary mb-2">라마다 · 평창</div>
+                    <h3 class="text-xl font-bold text-slate-900 mb-2 group-hover:text-primary transition-colors">
+                        라마다 평창 호텔 셔틀
+                    </h3>
+                    <p class="text-slate-500 text-sm mb-6 line-clamp-2">
+                        편안한 호캉스와 스키 여행을 동시에. 호텔 정문 하차 서비스.
+                    </p>
+                    <div class="flex items-center justify-between pt-4 border-t border-slate-100">
+                        <span class="text-slate-900 font-bold text-lg">20,000원~</span>
+                        <button class="text-primary font-bold text-sm flex items-center hover:underline">
+                            예약하기 <i data-lucide="arrow-right" class="w-4 h-4 ml-1"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Product 5: Phoenix Pyeongchang -->
+            <div
+                class="bg-white rounded-2xl shadow-lg overflow-hidden hover:shadow-xl transition-all group cursor-pointer border border-slate-100">
+                <div class="relative h-64 overflow-hidden">
+                    <img src="./images/shuttle_vivaldi.png"
+                        class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                        alt="Phoenix" />
+                </div>
+                <div class="p-6">
+                    <div class="text-xs font-bold text-primary mb-2">휘닉스 · 평창</div>
+                    <h3 class="text-xl font-bold text-slate-900 mb-2 group-hover:text-primary transition-colors">
+                        휘닉스 평창 스키버스
+                    </h3>
+                    <p class="text-slate-500 text-sm mb-6 line-clamp-2">
+                        올인원 패키지로 더 저렴하게. 리프트권+셔틀 패키지 특가 판매 중.
+                    </p>
+                    <div class="flex items-center justify-between pt-4 border-t border-slate-100">
+                        <span class="text-slate-900 font-bold text-lg">17,000원~</span>
+                        <button class="text-primary font-bold text-sm flex items-center hover:underline">
+                            예약하기 <i data-lucide="arrow-right" class="w-4 h-4 ml-1"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Product 6: Welli Hilli Park -->
+            <div
+                class="bg-white rounded-2xl shadow-lg overflow-hidden hover:shadow-xl transition-all group cursor-pointer border border-slate-100">
+                <div class="relative h-64 overflow-hidden">
+                    <img src="./images/well.jpg"
+                        class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                        alt="Welli Hilli" />
+                </div>
+                <div class="p-6">
+                    <div class="text-xs font-bold text-primary mb-2">웰리힐리 · 횡성</div>
+                    <h3 class="text-xl font-bold text-slate-900 mb-2 group-hover:text-primary transition-colors">
+                        웰리힐리파크 셔틀
+                    </h3>
+                    <p class="text-slate-500 text-sm mb-6 line-clamp-2">
+                        KTX 둔내역 연계 무료 셔틀 정보 및 수도권 유료 셔틀 예약.
+                    </p>
+                    <div class="flex items-center justify-between pt-4 border-t border-slate-100">
+                        <span class="text-slate-900 font-bold text-lg">15,000원~</span>
+                        <button class="text-primary font-bold text-sm flex items-center hover:underline">
+                            예약하기 <i data-lucide="arrow-right" class="w-4 h-4 ml-1"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- Private Transfer Banner -->
+        <div
+            class="bg-gradient-to-r from-slate-900 to-slate-800 rounded-3xl p-8 md:p-12 text-white flex flex-col md:flex-row items-center justify-between shadow-2xl relative overflow-hidden">
+            <div class="absolute inset-0 opacity-20">
+                <img src="./images/private_van_family.png" class="w-full h-full object-cover" alt="Private Van" />
+            </div>
+            <div class="relative z-10 mb-8 md:mb-0 md:pr-8 text-center md:text-left">
+                <div class="text-accent font-bold mb-2 uppercase tracking-wider">Premium Service</div>
+                <h3 class="text-3xl md:text-4xl font-bold mb-4">프라이빗 밴으로 더 편안하게</h3>
+                <p class="text-slate-300 text-lg leading-relaxed max-w-xl">
+                    우리 일행끼리만 프라이빗하게 이동하고 싶으신가요? <br />
+                    집 앞에서 스키장까지, 장비 렌탈 추가 할인 혜택까지 받아보세요.
+                </p>
+            </div>
+            <div class="relative z-10 flex-shrink-0">
+                <button
+                    class="bg-primary hover:bg-primaryHover text-white px-8 py-4 rounded-full font-bold shadow-lg transition-all transform hover:scale-105 flex items-center">
+                    프라이빗 견적 받기 <i data-lucide="arrow-right" class="w-5 h-5 ml-2"></i>
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-white border-t border-slate-100 py-24 px-4 md:px-8">
+        <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-4 gap-12 md:gap-20">
+            <div class="col-span-1 md:col-span-1">
+                <div class="text-3xl font-black text-primary tracking-tighter mb-8">RIDEUS</div>
+                <p class="text-slate-400 text-[14px] leading-relaxed font-bold max-w-xs">
+                    여행의 설렘이 이동의 피로로 바래지 않도록. <br />
+                    라이더스가 당신의 여정을 편안하게 지켜드립니다.
+                </p>
+            </div>
+            <div>
+                <h5 class="text-slate-900 text-[13px] font-black mb-8 uppercase tracking-widest">Services</h5>
+                <ul class="text-slate-500 text-[14px] space-y-4 font-bold">
+                    <li class="hover:text-primary cursor-pointer transition">셔틀 버스 노선</li>
+                    <li class="hover:text-primary cursor-pointer transition">프라이빗 이동 예약</li>
+                    <li class="hover:text-primary cursor-pointer transition">전국 관광택시 투어</li>
+                    <li class="hover:text-primary cursor-pointer transition">기업 제휴 문의</li>
+                </ul>
+            </div>
+            <div>
+                <h5 class="text-slate-900 text-[13px] font-black mb-8 uppercase tracking-widest">Support</h5>
+                <ul class="text-slate-500 text-[14px] space-y-4 font-bold">
+                    <li class="hover:text-primary cursor-pointer transition font-black text-primary">자주 묻는 질문 (FAQ)</li>
+                    <li class="hover:text-primary cursor-pointer transition">고객센터 1:1 채팅</li>
+                    <li class="hover:text-primary cursor-pointer transition">이용약관</li>
+                    <li class="hover:text-primary cursor-pointer transition text-slate-900">개인정보처리방침</li>
+                </ul>
+            </div>
+            <div class="bg-slate-50 p-8 rounded-3xl border border-slate-100">
+                <h5 class="text-slate-900 text-[13px] font-black mb-6 uppercase tracking-widest text-center">Contact Us
+                </h5>
+                <div class="text-center">
+                    <span class="block text-2xl font-black text-slate-900 mb-2">1234-5678</span>
+                    <p class="text-[11px] text-slate-400 font-bold mb-6">MON-FRI 09:00 - 18:00 (KST)</p>
+                    <button
+                        class="w-full bg-white border border-slate-200 py-3 rounded-xl font-black text-xs hover:bg-slate-50 transition shadow-sm">
+                        카카오톡 실시간 상담
+                    </button>
+                </div>
+            </div>
+        </div>
+        <div
+            class="max-w-7xl mx-auto mt-20 pt-10 border-t border-slate-50 flex flex-col md:flex-row justify-between items-center text-[11px] text-slate-400 font-black uppercase tracking-widest gap-6">
+            <p>&copy; 2026 RIDEUS ALL RIGHTS RESERVED.</p>
+            <div class="flex space-x-10">
+                <span class="flex items-center">
+                    <i data-lucide="globe" class="w-3 h-3 mr-2"></i> Global Office
+                </span>
+                <span>Partnership</span>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Mobile Menu Overlay -->
+    <div id="mobile-menu" class="fixed inset-0 bg-white z-[100] p-8 flex flex-col animate-fade-in hidden">
+        <div class="flex justify-between items-center mb-16">
+            <div class="text-3xl font-black text-primary tracking-tighter">RIDEUS</div>
+            <i id="close-menu-btn" data-lucide="x" class="w-8 h-8 cursor-pointer text-slate-900"></i>
+        </div>
+        <ul class="space-y-10 text-3xl font-black text-slate-300">
+            <li class="hover:text-primary transition cursor-pointer" onclick="location.href='index.html'">홈</li>
+            <li class="hover:text-primary transition cursor-pointer" onclick="location.href='theme-park.html'">테마파크</li>
+            <li class="hover:text-primary transition cursor-pointer" onclick="location.href='ski-resort.html'">스키리조트
+            </li>
+            <li class="hover:text-primary transition cursor-pointer" onclick="location.href='concert.html'">공연/이벤트</li>
+            <li class="hover:text-primary transition cursor-pointer" onclick="location.href='shopping.html'">쇼핑</li>
+            <li class="hover:text-primary transition cursor-pointer" onclick="location.href='custom-tour.html'">커스텀투어
+            </li>
+            <li class="pt-10 text-sm font-black text-slate-400 flex items-center">
+                <i data-lucide="globe" class="w-4 h-4 mr-2"></i> KR | KRW
+            </li>
+        </ul>
+    </div>
+
+    <!-- Scripts -->
+    <script src="script.js"></script>
+</body>
+
+</html>

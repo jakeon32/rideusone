@@ -1,0 +1,50 @@
+@import url('https://fonts.googleapis.com/css2?family=Pretendard:wght@100;200;300;400;500;600;700;800;900&display=swap');
+
+:root {
+  --primary-color: #4ECDC4;
+  /* Mint Blue */
+  --primary-hover: #3EB9B1;
+  --secondary-color: #FF6B35;
+  /* Coral Orange */
+  --accent-color: #FFE66D;
+  /* Yellow */
+  --success-color: #95E1D3;
+  /* Mint */
+  --text-dark: #1F2937;
+  /* Gray 900 */
+  --text-gray: #6B7280;
+  /* Gray 500 */
+  --bg-light: #F7F9FC;
+}
+
+body {
+  font-family: 'Pretendard', -apple-system, BlinkMacSystemFont, system-ui, Roboto, 'Helvetica Neue', 'Segoe UI', 'Apple SD Gothic Neo', 'Malgun Gothic', 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', sans-serif;
+}
+
+/* Hide scrollbar for Chrome, Safari and Opera */
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
+/* Hide scrollbar for IE, Edge and Firefox */
+.no-scrollbar {
+  -ms-overflow-style: none;
+  /* IE and Edge */
+  scrollbar-width: none;
+  /* Firefox */
+}
+
+/* Custom Animations */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+.animate-fade-in {
+  animation: fadeIn 0.3s ease-in-out;
+}
