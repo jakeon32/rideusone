@@ -1,6 +1,64 @@
 // Initialize Lucide Icons
 lucide.createIcons();
 
+// ====================================
+// Page Transition with View Transitions API
+// ====================================
+
+// Check if browser supports View Transitions API
+function supportsViewTransitions() {
+    return 'startViewTransition' in document;
+}
+
+// Add page transition to all internal links
+function setupPageTransitions() {
+    // Get all anchor links
+    const links = document.querySelectorAll('a[href]');
+
+    links.forEach(link => {
+        const href = link.getAttribute('href');
+
+        // Check if it's an internal link (not external, not anchor)
+        if (href &&
+            !href.startsWith('http') &&
+            !href.startsWith('#') &&
+            !href.startsWith('mailto:') &&
+            !href.startsWith('tel:')) {
+
+            link.addEventListener('click', (e) => {
+                e.preventDefault();
+                const targetUrl = link.href;
+
+                // Use View Transitions API if supported
+                if (supportsViewTransitions()) {
+                    document.startViewTransition(() => {
+                        window.location.href = targetUrl;
+                    });
+                } else {
+                    // Fallback: Simple fade effect
+                    document.body.style.opacity = '0';
+                    setTimeout(() => {
+                        window.location.href = targetUrl;
+                    }, 200);
+                }
+            });
+        }
+    });
+}
+
+// Page load animation
+window.addEventListener('DOMContentLoaded', () => {
+    // Fade in when page loads
+    document.body.style.opacity = '0';
+    setTimeout(() => {
+        document.body.style.transition = 'opacity 0.3s ease-in-out';
+        document.body.style.opacity = '1';
+    }, 10);
+});
+
+// Initialize page transitions
+setupPageTransitions();
+
 // Sticky Header
 const nav = document.getElementById('main-nav');
 const logoImg = document.getElementById('main-logo');
