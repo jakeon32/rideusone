@@ -34,7 +34,8 @@
     <script src="https://unpkg.com/lucide@latest"></script>
 </head>
 
-<body class="min-h-screen bg-slate-50 text-slate-900 font-sans selection:bg-orange-100 selection:text-orange-900 page-loading">
+<body
+    class="min-h-screen bg-slate-50 text-slate-900 font-sans selection:bg-orange-100 selection:text-orange-900 page-loading">
 
     <!-- Navigation -->
     <nav id="main-nav" class="fixed top-0 w-full z-50 transition-all duration-300 bg-transparent">
@@ -45,17 +46,18 @@
                     id="main-logo" />
                 <!-- Desktop Menu -->
                 <div id="nav-links"
-                    class="hidden md:flex items-center space-x-4 lg:space-x-8 text-[14px] lg:text-[15px] font-bold text-white transition-colors duration-300">
+                    class="hidden md:flex items-center space-x-4 lg:space-x-8 text-sm lg:text-base font-bold text-white transition-colors duration-300">
                     <a href="theme-park.html" class="hover:text-primary transition">테마파크</a>
                     <a href="ski-resort.html" class="hover:text-primary transition">스키리조트</a>
                     <a href="concert.html" class="hover:text-primary transition">공연/이벤트</a>
+                    <a href="shopping.html" class="hover:text-primary transition">쇼핑</a>
                     <a href="custom-tour.html" class="hover:text-primary transition whitespace-nowrap">커스텀투어</a>
                 </div>
             </div>
 
             <div class="flex items-center space-x-2 sm:space-x-4">
                 <div id="lang-selector"
-                    class="hidden lg:flex items-center space-x-1 text-xs xl:text-sm font-bold border rounded-full px-3 xl:px-4 py-1.5 transition border-white/30 text-white hover:bg-white/10 cursor-pointer">
+                    class="hidden lg:flex items-center space-x-1 text-xs sm:text-sm font-bold border rounded-full px-3 xl:px-4 py-1.5 transition border-white/30 text-white hover:bg-white/10 cursor-pointer">
                     <i data-lucide="globe" class="w-3.5 xl:w-4 h-3.5 xl:h-4"></i>
                     <span>한국어</span>
                     <span class="mx-1">|</span>
@@ -79,20 +81,20 @@
 
         <!-- Content -->
         <div class="relative z-10 text-center px-[1.2rem] sm:px-6 lg:px-8 max-w-5xl mt-12 sm:mt-16 w-full">
-            <h1 class="text-[32px] sm:text-[42px] md:text-[52px] lg:text-[62px] xl:text-[72px] font-bold text-white mb-5 sm:mb-7 drop-shadow-lg leading-[1.15]">
+            <h1
+                class="text-4xl sm:text-6xl lg:text-7xl font-bold text-white mb-5 sm:mb-7 drop-shadow-lg leading-[1.2] sm:leading-[1.2] lg:leading-[1.2] tracking-wide">
                 여행이 필요한 순간,<br class="hidden sm:block" />
                 <span class="sm:hidden"> </span>가장 편안한 이동을 선물합니다
             </h1>
-            <p class="text-[15px] sm:text-[17px] md:text-[19px] lg:text-[21px] text-white/95 mb-8 sm:mb-10 drop-shadow-md font-medium px-2 leading-relaxed">
+            <p
+                class="text-lg sm:text-xl lg:text-2xl text-white/95 mb-8 sm:mb-10 drop-shadow-md font-medium px-2 leading-relaxed">
                 테마파크, 스키장, 콘서트장 가는 길 – 고민하지 말고 떠나보세요
             </p>
             <div class="flex gap-3 sm:gap-4 justify-center flex-wrap px-2">
-                <button
-                    class="bg-primary text-white px-7 sm:px-9 py-3.5 sm:py-4 rounded-full font-bold hover:bg-primaryHover transition-all shadow-lg hover:shadow-xl text-[15px] sm:text-[16px] transform hover:-translate-y-0.5 w-full sm:w-auto">
+                <button class="btn-primary">
                     내 이동편 찾기
                 </button>
-                <button
-                    class="bg-white border-2 border-primary text-primary px-7 sm:px-9 py-3.5 sm:py-4 rounded-full font-bold hover:bg-[#FFF5F0] transition-all text-[15px] sm:text-[16px] shadow-lg hover:shadow-xl transform hover:-translate-y-0.5 w-full sm:w-auto">
+                <button class="btn-secondary">
                     간편 견적 문의
                 </button>
             </div>
@@ -100,61 +102,43 @@
     </section>
 
     <!-- Sticky Category Tabs -->
-    <div id="sticky-tabs"
-        class="sticky top-0 z-40 bg-white border-b border-gray-100 shadow-sm transition-transform duration-300 transform translate-y-0">
-        <div class="max-w-7xl mx-auto px-[1.2rem] sm:px-6 overflow-x-auto no-scrollbar">
-            <div class="flex items-center justify-start sm:justify-center space-x-2 sm:space-x-4 h-14 sm:h-16 whitespace-nowrap text-[13px] sm:text-[15px] font-bold">
-                <a href="index.html"
-                    class="bg-primary text-white px-4 sm:px-6 py-2 sm:py-2.5 rounded-full shadow-md hover:bg-primaryHover transition-all flex-shrink-0">전체</a>
-                <a href="theme-park.html"
-                    class="text-gray-500 hover:text-primary hover:bg-gray-50 px-4 sm:px-6 py-2 sm:py-2.5 rounded-full transition-all flex-shrink-0">테마파크</a>
-                <a href="ski-resort.html"
-                    class="text-gray-500 hover:text-primary hover:bg-gray-50 px-4 sm:px-6 py-2 sm:py-2.5 rounded-full transition-all flex-shrink-0">스키리조트</a>
-                <a href="concert.html"
-                    class="text-gray-500 hover:text-primary hover:bg-gray-50 px-4 sm:px-6 py-2 sm:py-2.5 rounded-full transition-all flex-shrink-0">공연/이벤트</a>
-                <a href="shopping.html"
-                    class="text-gray-500 hover:text-primary hover:bg-gray-50 px-4 sm:px-6 py-2 sm:py-2.5 rounded-full transition-all flex-shrink-0">쇼핑</a>
-                <a href="custom-tour.html"
-                    class="text-gray-500 hover:text-primary hover:bg-gray-50 px-4 sm:px-6 py-2 sm:py-2.5 rounded-full transition-all flex-shrink-0">커스텀투어</a>
+    <div id="sticky-tabs" class="sticky-tabs">
+        <div class="container-responsive overflow-x-auto no-scrollbar">
+            <div class="tabs-container">
+                <a href="index.html" class="btn-tab-active">전체</a>
+                <a href="theme-park.html" class="btn-tab">테마파크</a>
+                <a href="ski-resort.html" class="btn-tab">스키리조트</a>
+                <a href="concert.html" class="btn-tab">공연/이벤트</a>
+                <a href="shopping.html" class="btn-tab">쇼핑</a>
+                <a href="custom-tour.html" class="btn-tab">커스텀투어</a>
             </div>
         </div>
     </div>
 
     <!-- Categories Section -->
-    <section class="max-w-7xl mx-auto px-[1.2rem] sm:px-6 py-12 sm:py-16 lg:py-20">
-        <div class="text-center mb-8 sm:mb-12">
-            <h2 class="text-[28px] sm:text-[34px] lg:text-[40px] font-bold text-gray-900 mb-3 sm:mb-4 px-4 leading-tight">
-                어디로 떠나시나요?
-            </h2>
-            <p class="text-[15px] sm:text-[17px] text-gray-600 px-4 leading-relaxed">
-                목적지만 정하세요, 가는 길은 라이더스가 책임질게요
-            </p>
+    <section class="container-responsive section-padding">
+        <div class="section-header">
+            <h2 class="section-title">어디로 떠나시나요?</h2>
+            <p class="section-subtitle">목적지만 정하세요, 가는 길은 라이더스가 책임질게요</p>
         </div>
 
         <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
 
             <!-- Category 1: Theme Park -->
             <div class="group cursor-pointer" onclick="location.href='theme-park.html'">
-                <div
-                    class="bg-white rounded-2xl shadow-md hover:shadow-xl transition-all duration-300 overflow-hidden h-full flex flex-col">
-                    <div class="relative h-48 overflow-hidden">
-                        <img src="./images/shuttle_everland.png"
-                            class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
-                            alt="Theme Park" />
+                <div class="card">
+                    <div class="card-image">
+                        <img src="./images/shuttle_everland.png" alt="Theme Park" />
                         <div class="absolute top-4 right-4">
-                            <span
-                                class="inline-flex items-center px-3 py-1 rounded-full text-xs font-medium bg-accent text-[#8B6914]">
-                                셔틀/프라이빗
-                            </span>
+                            <span class="card-badge">셔틀/프라이빗</span>
                         </div>
                     </div>
-                    <div class="p-5 sm:p-6 flex-grow flex flex-col">
-                        <h3 class="text-[20px] sm:text-[22px] font-bold text-gray-900 mb-2 leading-tight">테마파크</h3>
-                        <p class="text-[14px] sm:text-[15px] text-gray-600 mb-4 line-clamp-2 leading-relaxed">에버랜드, 경주월드 갈 때 운전 걱정 없이 신나게 즐기세요</p>
-                        <div class="flex items-center justify-between mt-auto">
-                            <span class="text-[13px] sm:text-[14px] text-gray-500">2개 서비스</span>
-                            <span
-                                class="text-primary font-bold text-[14px] sm:text-[15px] group-hover:translate-x-2 transition-transform inline-flex items-center gap-1">
+                    <div class="card-content">
+                        <h3 class="card-title">테마파크</h3>
+                        <p class="card-description">에버랜드, 경주월드 갈 때 운전 걱정 없이 신나게 즐기세요</p>
+                        <div class="card-footer">
+                            <span class="text-sm text-gray-500">2개 서비스</span>
+                            <span class="card-link">
                                 자세히 보기
                                 <i data-lucide="chevron-right" class="w-4 h-4"></i>
                             </span>
@@ -165,26 +149,19 @@
 
             <!-- Category 2: Ski Resort -->
             <div class="group cursor-pointer" onclick="location.href='ski-resort.html'">
-                <div
-                    class="bg-white rounded-2xl shadow-md hover:shadow-xl transition-all duration-300 overflow-hidden h-full flex flex-col">
-                    <div class="relative h-48 overflow-hidden">
-                        <img src="./images/private_van_ski.png"
-                            class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
-                            alt="Ski Resort" />
+                <div class="card">
+                    <div class="card-image">
+                        <img src="./images/private_van_ski.png" alt="Ski Resort" />
                         <div class="absolute top-4 right-4">
-                            <span
-                                class="inline-flex items-center px-3 py-1 rounded-full text-xs font-medium bg-accent text-[#8B6914]">
-                                셔틀/프라이빗
-                            </span>
+                            <span class="card-badge">셔틀/프라이빗</span>
                         </div>
                     </div>
-                    <div class="p-5 sm:p-6 flex-grow flex flex-col">
-                        <h3 class="text-[20px] sm:text-[22px] font-bold text-gray-900 mb-2 leading-tight">스키리조트</h3>
-                        <p class="text-[14px] sm:text-[15px] text-gray-600 mb-4 line-clamp-2 leading-relaxed">무거운 장비 챙겨도 OK, 스키장 앞까지 편안하게 모셔다 드려요</p>
-                        <div class="flex items-center justify-between mt-auto">
-                            <span class="text-[13px] sm:text-[14px] text-gray-500">6개 서비스</span>
-                            <span
-                                class="text-primary font-bold text-[14px] sm:text-[15px] group-hover:translate-x-2 transition-transform inline-flex items-center gap-1">
+                    <div class="card-content">
+                        <h3 class="card-title">스키리조트</h3>
+                        <p class="card-description">무거운 장비 챙겨도 OK, 스키장 앞까지 편안하게 모셔다 드려요</p>
+                        <div class="card-footer">
+                            <span class="text-sm text-gray-500">6개 서비스</span>
+                            <span class="card-link">
                                 자세히 보기
                                 <i data-lucide="chevron-right" class="w-4 h-4"></i>
                             </span>
@@ -195,26 +172,19 @@
 
             <!-- Category 3: Shopping -->
             <div class="group cursor-pointer" onclick="location.href='shopping.html'">
-                <div
-                    class="bg-white rounded-2xl shadow-md hover:shadow-xl transition-all duration-300 overflow-hidden h-full flex flex-col">
-                    <div class="relative h-48 overflow-hidden">
-                        <img src="./images/shinsegae-simon-busan-premium-outlet.png"
-                            class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
-                            alt="Shopping" />
+                <div class="card">
+                    <div class="card-image">
+                        <img src="./images/shinsegae-simon-busan-premium-outlet.png" alt="Shopping" />
                         <div class="absolute top-4 right-4">
-                            <span
-                                class="inline-flex items-center px-3 py-1 rounded-full text-xs font-medium bg-accent text-[#8B6914]">
-                                프라이빗 전용
-                            </span>
+                            <span class="card-badge">프라이빗 전용</span>
                         </div>
                     </div>
-                    <div class="p-5 sm:p-6 flex-grow flex flex-col">
-                        <h3 class="text-[20px] sm:text-[22px] font-bold text-gray-900 mb-2 leading-tight">쇼핑</h3>
-                        <p class="text-[14px] sm:text-[15px] text-gray-600 mb-4 line-clamp-2 leading-relaxed">쇼핑 짐이 많아도 걱정 없죠. 아울렛 쇼핑을 위한 프리미엄 밴</p>
-                        <div class="flex items-center justify-between mt-auto">
-                            <span class="text-[13px] sm:text-[14px] text-gray-500">1개 서비스</span>
-                            <span
-                                class="text-primary font-bold text-[14px] sm:text-[15px] group-hover:translate-x-2 transition-transform inline-flex items-center gap-1">
+                    <div class="card-content">
+                        <h3 class="card-title">쇼핑</h3>
+                        <p class="card-description">신세계 사이먼 파주 프리미엄 아울렛, 쇼핑 짐 걱정 없는 편안한 이동</p>
+                        <div class="card-footer">
+                            <span class="text-sm text-gray-500">1개 서비스</span>
+                            <span class="card-link">
                                 자세히 보기
                                 <i data-lucide="chevron-right" class="w-4 h-4"></i>
                             </span>
@@ -225,26 +195,19 @@
 
             <!-- Category 4: Custom Tour -->
             <div class="group cursor-pointer" onclick="location.href='custom-tour.html'">
-                <div
-                    class="bg-white rounded-2xl shadow-md hover:shadow-xl transition-all duration-300 overflow-hidden h-full flex flex-col">
-                    <div class="relative h-48 overflow-hidden">
-                        <img src="./images/tour_jeju.png"
-                            class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
-                            alt="Custom Tour" />
+                <div class="card">
+                    <div class="card-image">
+                        <img src="./images/tour_jeju.png" alt="Custom Tour" />
                         <div class="absolute top-4 right-4">
-                            <span
-                                class="inline-flex items-center px-3 py-1 rounded-full text-xs font-medium bg-accent text-[#8B6914]">
-                                프라이빗
-                            </span>
+                            <span class="card-badge">프라이빗</span>
                         </div>
                     </div>
-                    <div class="p-5 sm:p-6 flex-grow flex flex-col">
-                        <h3 class="text-[20px] sm:text-[22px] font-bold text-gray-900 mb-2 leading-tight">커스텀 투어</h3>
-                        <p class="text-[14px] sm:text-[15px] text-gray-600 mb-4 line-clamp-2 leading-relaxed">내가 짠 코스 그대로, 우리끼리만 떠나는 프라이빗 투어</p>
-                        <div class="flex items-center justify-between mt-auto">
-                            <span class="text-[13px] sm:text-[14px] text-gray-500">3개 서비스</span>
-                            <span
-                                class="text-primary font-bold text-[14px] sm:text-[15px] group-hover:translate-x-2 transition-transform inline-flex items-center gap-1">
+                    <div class="card-content">
+                        <h3 class="card-title">커스텀 투어</h3>
+                        <p class="card-description">내가 짠 코스 그대로, 우리끼리만 떠나는 프라이빗 투어</p>
+                        <div class="card-footer">
+                            <span class="text-sm text-gray-500">3개 서비스</span>
+                            <span class="card-link">
                                 자세히 보기
                                 <i data-lucide="chevron-right" class="w-4 h-4"></i>
                             </span>
@@ -255,26 +218,19 @@
 
             <!-- Category 5: Concert -->
             <div class="group cursor-pointer" onclick="location.href='concert.html'">
-                <div
-                    class="bg-white rounded-2xl shadow-md hover:shadow-xl transition-all duration-300 overflow-hidden h-full flex flex-col">
-                    <div class="relative h-48 overflow-hidden">
-                        <img src="./images/shuttle_concert.png"
-                            class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
-                            alt="Concert" />
+                <div class="card">
+                    <div class="card-image">
+                        <img src="./images/shuttle_concert.png" alt="Concert" />
                         <div class="absolute top-4 right-4">
-                            <span
-                                class="inline-flex items-center px-3 py-1 rounded-full text-xs font-medium bg-accent text-[#8B6914]">
-                                시즌 운영
-                            </span>
+                            <span class="card-badge">시즌 운영</span>
                         </div>
                     </div>
-                    <div class="p-5 sm:p-6 flex-grow flex flex-col">
-                        <h3 class="text-[20px] sm:text-[22px] font-bold text-gray-900 mb-2 leading-tight">공연/이벤트</h3>
-                        <p class="text-[14px] sm:text-[15px] text-gray-600 mb-4 line-clamp-2 leading-relaxed">콘서트 티켓팅 성공했다면? 이동편은 라이더스에 맡기세요</p>
-                        <div class="flex items-center justify-between mt-auto">
-                            <span class="text-[13px] sm:text-[14px] text-gray-500">4개 서비스</span>
-                            <span
-                                class="text-primary font-bold text-[14px] sm:text-[15px] group-hover:translate-x-2 transition-transform inline-flex items-center gap-1">
+                    <div class="card-content">
+                        <h3 class="card-title">공연/이벤트</h3>
+                        <p class="card-description">콘서트 티켓팅 성공했다면? 이동편은 라이더스에 맡기세요</p>
+                        <div class="card-footer">
+                            <span class="text-sm text-gray-500">4개 서비스</span>
+                            <span class="card-link">
                                 자세히 보기
                                 <i data-lucide="chevron-right" class="w-4 h-4"></i>
                             </span>
@@ -287,67 +243,55 @@
     </section>
 
     <!-- Featured Section -->
-    <section class="mb-12 sm:mb-16 lg:mb-20 bg-slate-50 py-12 sm:py-16 lg:py-20">
-        <div class="max-w-7xl mx-auto px-[1.2rem] sm:px-6">
+    <section class="mb-12 sm:mb-16 lg:mb-20 bg-slate-50 section-padding">
+        <div class="container-responsive">
             <div class="mb-8 sm:mb-12">
-                <h2 class="text-[28px] sm:text-[34px] lg:text-[40px] font-bold text-gray-900 mb-2 px-2 leading-tight">
-                    이달의 추천
-                </h2>
-                <p class="text-[15px] sm:text-[17px] text-gray-600 px-2 leading-relaxed">
-                    지금 가장 인기있는 서비스
-                </p>
+                <h2 class="section-title mb-2">이달의 추천</h2>
+                <p class="section-subtitle">지금 가장 인기있는 서비스</p>
             </div>
 
             <!-- Featured Card -->
             <div class="flex overflow-x-auto no-scrollbar gap-4 sm:gap-6 pb-6 -mr-[1.2rem] pr-[1.2rem] sm:mr-0 sm:pr-0">
-                <div
-                    class="min-w-[82vw] sm:min-w-[320px] md:min-w-[500px] bg-white rounded-2xl shadow-[0_4px_12px_rgba(0,0,0,0.1)] hover:shadow-[0_8px_24px_rgba(0,0,0,0.15)] overflow-hidden cursor-pointer transition-all flex-shrink-0">
-                    <div class="relative h-56 sm:h-64">
+                <div class="featured-card">
+                    <div class="featured-card-image">
                         <img src="./images/shuttle_vivaldi.png" class="w-full h-full object-cover" alt="Featured" />
                         <div class="absolute top-3 left-3 sm:top-4 sm:left-4">
-                            <span
-                                class="inline-flex items-center px-3 py-1.5 sm:px-4 sm:py-2 rounded-full text-xs sm:text-sm font-bold bg-purple-600 text-white shadow-lg">
-                                ⭐ 인기
-                            </span>
+                            <span class="featured-card-badge">⭐ 인기</span>
                         </div>
                     </div>
-                    <div class="p-4 sm:p-5 md:p-6">
-                        <span class="text-[12px] sm:text-[13px] md:text-[14px] text-secondary font-bold">겨울 시즌</span>
-                        <h3 class="text-[19px] sm:text-[22px] md:text-[24px] font-bold text-gray-900 mt-2 mb-2 sm:mb-3 leading-tight">
+                    <div class="featured-card-content">
+                        <span class="text-xs sm:text-sm text-secondary font-bold">겨울 시즌</span>
+                        <h3 class="text-xl sm:text-2xl font-bold text-gray-900 mt-2 mb-2 sm:mb-3 leading-tight">
                             이번 겨울, 스키장으로
                         </h3>
-                        <p class="text-[13px] sm:text-[14px] md:text-[15px] text-gray-600 mb-3 sm:mb-4 leading-relaxed">
+                        <p class="text-sm sm:text-base text-gray-600 mb-3 sm:mb-4 leading-relaxed">
                             6개 리조트 중 선택하세요. 셔틀과 프라이빗 모두 지원
                         </p>
                         <button
-                            class="text-primary font-bold text-[13px] sm:text-[14px] md:text-[15px] inline-flex items-center gap-2 hover:gap-3 transition-all">
+                            class="text-primary font-bold text-sm sm:text-base inline-flex items-center gap-2 hover:gap-3 transition-all">
                             자세히 보기
                             <i data-lucide="arrow-right" class="w-4 sm:w-5 h-4 sm:h-5"></i>
                         </button>
                     </div>
                 </div>
 
-                <div
-                    class="min-w-[82vw] sm:min-w-[320px] md:min-w-[500px] bg-white rounded-2xl shadow-[0_4px_12px_rgba(0,0,0,0.1)] hover:shadow-[0_8px_24px_rgba(0,0,0,0.15)] overflow-hidden cursor-pointer transition-all flex-shrink-0">
-                    <div class="relative h-56 sm:h-64">
+                <div class="featured-card">
+                    <div class="featured-card-image">
                         <img src="./images/private_van_family.png" class="w-full h-full object-cover" alt="Family" />
                         <div class="absolute top-3 left-3 sm:top-4 sm:left-4">
-                            <span
-                                class="inline-flex items-center px-3 py-1.5 sm:px-4 sm:py-2 rounded-full text-xs sm:text-sm font-bold bg-purple-600 text-white shadow-lg">
-                                RECOMMENDED
-                            </span>
+                            <span class="featured-card-badge">RECOMMENDED</span>
                         </div>
                     </div>
-                    <div class="p-4 sm:p-5 md:p-6">
-                        <span class="text-[12px] sm:text-[13px] md:text-[14px] text-secondary font-bold">가족 여행</span>
-                        <h3 class="text-[19px] sm:text-[22px] md:text-[24px] font-bold text-gray-900 mt-2 mb-2 sm:mb-3 leading-tight">
+                    <div class="featured-card-content">
+                        <span class="text-xs sm:text-sm text-secondary font-bold">가족 여행</span>
+                        <h3 class="text-xl sm:text-2xl font-bold text-gray-900 mt-2 mb-2 sm:mb-3 leading-tight">
                             에버랜드 패밀리 밴
                         </h3>
-                        <p class="text-[13px] sm:text-[14px] md:text-[15px] text-gray-600 mb-3 sm:mb-4 leading-relaxed">
+                        <p class="text-sm sm:text-base text-gray-600 mb-3 sm:mb-4 leading-relaxed">
                             아이들과 함께라면, 프라이빗 밴이 정답입니다.
                         </p>
                         <button
-                            class="text-primary font-bold text-[13px] sm:text-[14px] md:text-[15px] inline-flex items-center gap-2 hover:gap-3 transition-all">
+                            class="text-primary font-bold text-sm sm:text-base inline-flex items-center gap-2 hover:gap-3 transition-all">
                             자세히 보기
                             <i data-lucide="arrow-right" class="w-4 sm:w-5 h-4 sm:h-5"></i>
                         </button>
@@ -358,65 +302,56 @@
     </section>
 
     <!-- Themes Section -->
-    <section class="max-w-7xl mx-auto px-[1.2rem] sm:px-6 pb-12 sm:pb-16 lg:pb-20">
-        <div class="text-center mb-8 sm:mb-12">
-            <h2 class="text-[28px] sm:text-[34px] lg:text-[40px] font-bold text-gray-900 mb-3 sm:mb-4 px-4 leading-tight">
-                나에게 딱 맞는 이동편 찾기
-            </h2>
-            <p class="text-[15px] sm:text-[17px] text-gray-600 px-4 leading-relaxed">
-                누구와 함께, 어디로 떠나시나요?
-            </p>
+    <section class="container-responsive pb-12 sm:pb-16 lg:pb-20">
+        <div class="section-header">
+            <h2 class="section-title">나에게 딱 맞는 이동편 찾기</h2>
+            <p class="section-subtitle">누구와 함께, 어디로 떠나시나요?</p>
         </div>
 
         <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-6 sm:gap-8">
             <!-- Theme Item 1 -->
             <div class="flex flex-col items-center cursor-pointer group">
-                <div
-                    class="w-20 h-20 sm:w-24 sm:h-24 rounded-full bg-gradient-to-br from-primary to-primaryHover flex items-center justify-center mb-3 sm:mb-4 group-hover:scale-110 transition-transform shadow-lg group-hover:shadow-xl">
+                <div class="theme-icon theme-icon-primary">
                     <i data-lucide="snowflake" class="w-8 h-8 sm:w-10 sm:h-10 text-white"></i>
                 </div>
-                <h3 class="text-[14px] sm:text-[16px] lg:text-[17px] font-bold text-gray-900 mb-1 leading-tight">겨울 낭만 여행</h3>
-                <p class="text-[12px] sm:text-[13px] text-gray-500 text-center leading-relaxed">스키장 & 눈꽃축제</p>
+                <h3 class="theme-title">겨울 낭만 여행</h3>
+                <p class="theme-description">스키장 & 눈꽃축제</p>
             </div>
 
             <!-- Theme Item 2 -->
             <div class="flex flex-col items-center cursor-pointer group">
-                <div
-                    class="w-20 h-20 sm:w-24 sm:h-24 rounded-full bg-white border border-gray-100 flex items-center justify-center mb-3 sm:mb-4 group-hover:scale-110 transition-transform shadow-md group-hover:shadow-xl">
+                <div class="theme-icon theme-icon-secondary">
                     <i data-lucide="users" class="w-8 h-8 sm:w-10 sm:h-10 text-primary"></i>
                 </div>
-                <h3 class="text-[14px] sm:text-[16px] lg:text-[17px] font-bold text-gray-900 mb-1 leading-tight">아이와 함께</h3>
-                <p class="text-[12px] sm:text-[13px] text-gray-500 text-center leading-relaxed">테마파크 & 키즈투어</p>
+                <h3 class="theme-title">아이와 함께</h3>
+                <p class="theme-description">테마파크 & 키즈투어</p>
             </div>
 
             <!-- Theme Item 3 -->
             <div class="flex flex-col items-center cursor-pointer group">
-                <div
-                    class="w-20 h-20 sm:w-24 sm:h-24 rounded-full bg-white border border-gray-100 flex items-center justify-center mb-3 sm:mb-4 group-hover:scale-110 transition-transform shadow-md group-hover:shadow-xl">
+                <div class="theme-icon theme-icon-secondary">
                     <i data-lucide="music" class="w-8 h-8 sm:w-10 sm:h-10 text-primary"></i>
                 </div>
-                <h3 class="text-[14px] sm:text-[16px] lg:text-[17px] font-bold text-gray-900 mb-1 leading-tight">콘서트 원정대</h3>
-                <p class="text-[12px] sm:text-[13px] text-gray-500 text-center leading-relaxed">공연/팬미팅</p>
+                <h3 class="theme-title">콘서트 원정대</h3>
+                <p class="theme-description">공연/팬미팅</p>
             </div>
 
             <!-- Theme Item 4 -->
             <div class="flex flex-col items-center cursor-pointer group">
-                <div
-                    class="w-20 h-20 sm:w-24 sm:h-24 rounded-full bg-white border border-gray-100 flex items-center justify-center mb-3 sm:mb-4 group-hover:scale-110 transition-transform shadow-md group-hover:shadow-xl">
+                <div class="theme-icon theme-icon-secondary">
                     <i data-lucide="heart" class="w-8 h-8 sm:w-10 sm:h-10 text-primary"></i>
                 </div>
-                <h3 class="text-[14px] sm:text-[16px] lg:text-[17px] font-bold text-gray-900 mb-1 leading-tight">로맨틱 데이트</h3>
-                <p class="text-[12px] sm:text-[13px] text-gray-500 text-center leading-relaxed">아울렛 & 핫플레이스</p>
+                <h3 class="theme-title">로맨틱 데이트</h3>
+                <p class="theme-description">아울렛 & 핫플레이스</p>
             </div>
 
             <!-- Theme Item 5 -->
             <div class="flex flex-col items-center cursor-pointer group">
-                <div
-                    class="w-20 h-20 sm:w-24 sm:h-24 rounded-full bg-white border border-gray-100 flex items-center justify-center mb-3 sm:mb-4 group-hover:scale-110 transition-transform shadow-md group-hover:shadow-xl">
+                <div class="theme-icon theme-icon-secondary">
                     <i data-lucide="compass" class="w-8 h-8 sm:w-10 sm:h-10 text-primary"></i>
                 </div>
-                <h3 class="text-[14px] sm:text-[16px] lg:text-[17px] font-bold text-gray-900 mb-1 leading-tight">자유 여행러</h3>
-                <p class="text-[12px] sm:text-[13px] text-gray-500 text-center leading-relaxed">내 맘대로 짜는 코스</p>
+                <h3 class="theme-title">자유 여행러</h3>
+                <p class="theme-description">내 맘대로 짜는 코스</p>
             </div>
         </div>
     </section>
@@ -426,14 +361,14 @@
         <div class="max-w-7xl mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 sm:gap-12 lg:gap-20">
             <div class="col-span-1 sm:col-span-2 lg:col-span-1">
                 <div class="text-2xl sm:text-3xl font-black text-primary tracking-tighter mb-6 sm:mb-8">RIDEUS</div>
-                <p class="text-slate-400 text-[13px] sm:text-[14px] leading-relaxed font-bold max-w-xs">
+                <p class="text-slate-400 text-xs sm:text-sm leading-relaxed font-bold max-w-xs">
                     여행의 설렘이 이동의 피로로 바래지 않도록. <br />
                     라이더스가 당신의 여정을 편안하게 지켜드립니다.
                 </p>
             </div>
             <div>
-                <h5 class="text-slate-900 text-[12px] sm:text-[13px] font-black mb-6 sm:mb-8 uppercase tracking-widest">Services</h5>
-                <ul class="text-slate-500 text-[13px] sm:text-[14px] space-y-3 sm:space-y-4 font-bold">
+                <h5 class="text-slate-900 text-xs font-black mb-6 sm:mb-8 uppercase tracking-widest">Services</h5>
+                <ul class="text-slate-500 text-xs sm:text-sm space-y-3 sm:space-y-4 font-bold">
                     <li class="hover:text-primary cursor-pointer transition">셔틀 버스 노선</li>
                     <li class="hover:text-primary cursor-pointer transition">프라이빗 이동 예약</li>
                     <li class="hover:text-primary cursor-pointer transition">전국 관광택시 투어</li>
@@ -441,8 +376,8 @@
                 </ul>
             </div>
             <div>
-                <h5 class="text-slate-900 text-[12px] sm:text-[13px] font-black mb-6 sm:mb-8 uppercase tracking-widest">Support</h5>
-                <ul class="text-slate-500 text-[13px] sm:text-[14px] space-y-3 sm:space-y-4 font-bold">
+                <h5 class="text-slate-900 text-xs font-black mb-6 sm:mb-8 uppercase tracking-widest">Support</h5>
+                <ul class="text-slate-500 text-xs sm:text-sm space-y-3 sm:space-y-4 font-bold">
                     <li class="hover:text-primary cursor-pointer transition font-black text-primary">자주 묻는 질문 (FAQ)</li>
                     <li class="hover:text-primary cursor-pointer transition">고객센터 1:1 채팅</li>
                     <li class="hover:text-primary cursor-pointer transition">이용약관</li>
@@ -450,20 +385,21 @@
                 </ul>
             </div>
             <div class="bg-slate-50 p-6 sm:p-8 rounded-3xl border border-slate-100 sm:col-span-2 lg:col-span-1">
-                <h5 class="text-slate-900 text-[12px] sm:text-[13px] font-black mb-4 sm:mb-6 uppercase tracking-widest text-center">Contact Us
+                <h5 class="text-slate-900 text-xs font-black mb-4 sm:mb-6 uppercase tracking-widest text-center">Contact
+                    Us
                 </h5>
                 <div class="text-center">
                     <span class="block text-xl sm:text-2xl font-black text-slate-900 mb-2">1234-5678</span>
-                    <p class="text-[10px] sm:text-[11px] text-slate-400 font-bold mb-4 sm:mb-6">MON-FRI 09:00 - 18:00 (KST)</p>
+                    <p class="text-xs text-slate-400 font-bold mb-4 sm:mb-6">MON-FRI 09:00 - 18:00 (KST)</p>
                     <button
-                        class="w-full bg-white border border-slate-200 py-2.5 sm:py-3 rounded-xl font-black text-[11px] sm:text-xs hover:bg-slate-50 transition shadow-sm">
+                        class="w-full bg-white border border-slate-200 py-2.5 sm:py-3 rounded-xl font-black text-xs hover:bg-slate-50 transition shadow-sm">
                         카카오톡 실시간 상담
                     </button>
                 </div>
             </div>
         </div>
         <div
-            class="max-w-7xl mx-auto mt-12 sm:mt-16 lg:mt-20 pt-8 sm:pt-10 border-t border-slate-50 flex flex-col md:flex-row justify-between items-center text-[10px] sm:text-[11px] text-slate-400 font-black uppercase tracking-widest gap-4 sm:gap-6">
+            class="max-w-7xl mx-auto mt-12 sm:mt-16 lg:mt-20 pt-8 sm:pt-10 border-t border-slate-50 flex flex-col md:flex-row justify-between items-center text-xs text-slate-400 font-black uppercase tracking-widest gap-4 sm:gap-6">
             <p>&copy; 2026 RIDEUS ALL RIGHTS RESERVED.</p>
             <div class="flex space-x-6 sm:space-x-10">
                 <span class="flex items-center">
