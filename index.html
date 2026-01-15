@@ -78,9 +78,22 @@
     <!-- Hero Section -->
     <section class="relative min-h-screen flex items-center justify-center">
         <!-- Background with Gradient Overlay -->
-        <div class="absolute inset-0 bg-gradient-to-br from-[#FF6B35]/20 to-[#4ECDC4]/20">
-            <img src="./images/hero_bg.png" class="w-full h-full object-cover opacity-90" alt="Travel background" />
-            <div class="absolute inset-0 bg-black/35"></div>
+        <div class="absolute inset-0 bg-gradient-to-br from-[#FF6B35]/20 to-[#4ECDC4]/20 z-0">
+            <div id="hero-bg-slider" class="absolute inset-0 w-full h-full">
+                <!-- Image 1 (Active by default) -->
+                <img src="./images/hero_bg.png"
+                    class="absolute inset-0 w-full h-full object-cover transition-opacity duration-1000 opacity-90 hero-slide active"
+                    alt="Travel background 1" />
+                <!-- Image 2 -->
+                <img src="./images/hero_bg02.jpg"
+                    class="absolute inset-0 w-full h-full object-cover transition-opacity duration-1000 opacity-0 hero-slide"
+                    alt="Travel background 2" />
+                <!-- Image 3 -->
+                <img src="./images/hero_bg03.jpg"
+                    class="absolute inset-0 w-full h-full object-cover transition-opacity duration-1000 opacity-0 hero-slide"
+                    alt="Travel background 3" />
+            </div>
+            <div class="absolute inset-0 bg-black/35 z-10"></div>
         </div>
 
         <!-- Content -->

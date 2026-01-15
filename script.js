@@ -348,3 +348,24 @@ function performSearch() {
 // Initialize
 // document.addEventListener('DOMContentLoaded', initSearch); // already running script at bottom of body
 initSearch();
+initHeroSlider();
+
+function initHeroSlider() {
+    const slides = document.querySelectorAll('.hero-slide');
+    if (slides.length < 2) return;
+
+    let currentIndex = 0;
+
+    setInterval(() => {
+        // Current slide fade out
+        slides[currentIndex].classList.remove('opacity-90');
+        slides[currentIndex].classList.add('opacity-0');
+
+        // Next slide index
+        currentIndex = (currentIndex + 1) % slides.length;
+
+        // Next slide fade in
+        slides[currentIndex].classList.remove('opacity-0');
+        slides[currentIndex].classList.add('opacity-90');
+    }, 3000);
+}
