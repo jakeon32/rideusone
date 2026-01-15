@@ -111,8 +111,15 @@
 
                 <!-- Date Section -->
                 <div class="flex-[1.2] px-4 sm:px-8 py-3 sm:py-4 cursor-pointer hover:bg-gray-50 transition rounded-[1.5rem] sm:rounded-none relative group"
-                    onclick="openDateModal()">
-                    <div class="flex flex-col items-start w-full">
+                    onclick="openDatePicker('departure')">
+
+                    <!-- Hidden Input for Departure -->
+                    <input type="date" id="departure-date-input"
+                        class="absolute inset-0 opacity-0 cursor-pointer w-full h-full z-10"
+                        style="visibility: hidden; position: absolute;" onchange="handleDateChange('departure')">
+
+                    <div class="flex flex-col items-start w-full pointer-events-none">
+                        <!-- pointer-events-none to let input catch click if z-index works, but actually showPicker needs click on element possibly. Let's rely on JS openDatePicker triggering showPicker. -->
                         <span
                             class="text-[0.65rem] sm:text-xs font-black text-gray-400 tracking-widest uppercase mb-0.5 sm:mb-1">When?</span>
                         <div class="flex items-center w-full">
@@ -123,7 +130,15 @@
                             </div>
 
                             <!-- Return Date / Add Return Button (Hidden by default) -->
-                            <div id="return-section" class="hidden pl-4 border-l border-gray-200 ml-4 flex-1">
+                            <div id="return-section"
+                                class="hidden pl-4 border-l border-gray-200 ml-4 flex-1 relative pointer-events-auto"
+                                onclick="event.stopPropagation(); openDatePicker('return')">
+                                <!-- Hidden Input for Return -->
+                                <input type="date" id="return-date-input"
+                                    class="absolute inset-0 opacity-0 cursor-pointer w-full h-full z-10"
+                                    style="visibility: hidden; position: absolute;"
+                                    onchange="handleDateChange('return')">
+
                                 <div class="flex items-center gap-2" id="add-return-btn-container">
                                     <i data-lucide="plus-circle" class="w-4 h-4 text-gray-400"></i>
                                     <span
@@ -519,34 +534,7 @@
         </div>
     </div>
 
-    <!-- Date Selection Modal (Simple HTML5 date input wrapper for MVP/Mobile-friendly) -->
-    <div id="date-modal"
-        class="fixed inset-0 bg-black/50 z-[100] hidden items-center justify-center animate-fade-in backdrop-blur-sm"
-        onclick="closeDateModal(event)">
-        <div class="bg-white w-[90%] sm:w-[24rem] rounded-3xl p-6 shadow-2xl" id="date-modal-content">
-            <div class="flex justify-between items-center mb-6">
-                <h3 class="text-xl font-black text-gray-900">언제 떠나시나요?</h3>
-                <button onclick="closeDateModal()" class="p-2 hover:bg-gray-100 rounded-full transition"><i
-                        data-lucide="x" class="w-6 h-6 text-gray-400"></i></button>
-            </div>
-            <div class="space-y-4">
-                <div>
-                    <label class="block text-xs font-black text-gray-400 uppercase tracking-widest mb-2">가는 날</label>
-                    <input type="date" id="departure-date-input"
-                        class="w-full p-4 bg-gray-50 rounded-xl font-bold text-gray-800 border-none focus:ring-2 focus:ring-primary outline-none"
-                        onchange="handleDateChange('departure')">
-                </div>
-                <div id="modal-return-date-container" class="hidden">
-                    <label class="block text-xs font-black text-gray-400 uppercase tracking-widest mb-2">오는 날
-                        (선택)</label>
-                    <input type="date" id="return-date-input"
-                        class="w-full p-4 bg-gray-50 rounded-xl font-bold text-gray-800 border-none focus:ring-2 focus:ring-secondary outline-none"
-                        onchange="handleDateChange('return')">
-                </div>
-                <!-- Button removed for direct selection UX -->
-            </div>
-        </div>
-    </div>
+    <!-- Date Selection Modal REMOVED -->
     <script src="script.js"></script>
 </body>
 

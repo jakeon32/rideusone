@@ -121,8 +121,9 @@ const categories = {
 };
 
 // Elements
+
 const destinationModal = document.getElementById('destination-modal');
-const dateModal = document.getElementById('date-modal');
+
 const destStep1 = document.getElementById('dest-step-1');
 const destStep2 = document.getElementById('dest-step-2');
 const selectedCategoryTitle = document.getElementById('selected-category-title');
@@ -134,6 +135,9 @@ const returnSection = document.getElementById('return-section');
 const addReturnBtnContainer = document.getElementById('add-return-btn-container');
 const returnDateDisplay = document.getElementById('return-date-display');
 const modalReturnDateContainer = document.getElementById('modal-return-date-container');
+
+const departureDateInput = document.getElementById('departure-date-input');
+const returnDateInput = document.getElementById('return-date-input');
 
 // Init
 function initSearch() {
@@ -152,62 +156,22 @@ function renderCategories() {
     lucide.createIcons();
 }
 
-// Modal Functions
-function openDestinationModal() {
-    destinationModal.classList.remove('hidden');
-    destinationModal.classList.add('flex');
-    destStep1.classList.remove('hidden');
-    destStep2.classList.add('hidden');
-}
 
-function closeDestinationModal(e) {
-    if (e && e.target !== destinationModal && e.target.closest('#destination-modal-content')) return;
-    destinationModal.classList.add('hidden');
-    destinationModal.classList.remove('flex');
-}
 
-function backToCategories() {
-    destStep2.classList.add('hidden');
-    destStep1.classList.remove('hidden');
-}
+function openDatePicker(type) {
+    const input = type === 'departure' ? departureDateInput : returnDateInput;
+    if (!input) return;
 
-function openDateModal() {
-    // Show/Hide return date input based on category
-    if (currentCategory === 'ski-resort' || currentCategory === 'concert' || currentCategory === 'theme-park') {
-        modalReturnDateContainer.classList.remove('hidden');
-    } else {
-        modalReturnDateContainer.classList.add('hidden');
+    // For return date, if container is hidden/pointer-events issues, we might need to handle visibility?
+    // But structure handles it.
+
+    try {
+        input.showPicker();
+    } catch (e) {
+        console.warn('showPicker not supported, fallback to focus/click');
+        input.focus();
+        input.click();
     }
-
-
-    // Pre-fill
-    document.getElementById('departure-date-input').value = departureDate || '';
-    document.getElementById('return-date-input').value = returnDate || '';
-
-    dateModal.classList.remove('hidden');
-    dateModal.classList.add('flex');
-
-    // UX: Immediate focus and picker
-    const depInput = document.getElementById('departure-date-input');
-    // If opening from "Add Return", focus return input, else focus departure
-    // Simple heuristic: if departure is already set and we just opened, maybe focus return?
-    // But usually this opens from "When?" click.
-    setTimeout(() => {
-        // If we want to support "Add Return" click passing a flag, we'd need to change signature.
-        // For now, let's just default to departure input unless we add logic.
-        depInput.focus();
-        try {
-            depInput.showPicker();
-        } catch (e) {
-            console.log('showPicker not supported');
-        }
-    }, 100);
-}
-
-function closeDateModal(e) {
-    if (e && e.target !== dateModal && e.target.closest('#date-modal-content')) return;
-    dateModal.classList.add('hidden');
-    dateModal.classList.remove('flex');
 }
 
 // Selection Logic
@@ -241,8 +205,8 @@ function selectSubItem(item) {
 
     closeDestinationModal();
 
-    // Auto open date modal?
-    // setTimeout(() => openDateModal(), 300); // Optional UX enhancement
+    // Auto open date picker departure
+    setTimeout(() => openDatePicker('departure'), 300);
 }
 
 function updateReturnSectionVisibility() {
@@ -266,41 +230,28 @@ function updateReturnSectionVisibility() {
 
 // Date Logic
 function handleDateChange(type) {
-    confirmDateSelection();
-}
-
-function confirmDateSelection() {
-    const depInput = document.getElementById('departure-date-input').value;
-    const retInput = document.getElementById('return-date-input').value;
-
-    if (depInput) {
-        departureDate = depInput;
-        searchDateValue.textContent = formatDisplayDate(depInput);
-        searchDateValue.classList.add('text-primary');
-    }
-
-    if (retInput && (currentCategory === 'ski-resort' || currentCategory === 'concert' || currentCategory === 'theme-park')) {
-        returnDate = retInput;
-        searchReturnDateValue.textContent = formatDisplayDate(retInput);
-        searchReturnDateValue.classList.add('text-secondary');
-
-        addReturnBtnContainer.classList.add('hidden');
-        returnDateDisplay.classList.remove('hidden');
-    } else {
-        // If no return date selected or category change
-        if (!returnDate) {
-            addReturnBtnContainer.classList.remove('hidden');
-            returnDateDisplay.classList.add('hidden');
+    if (type === 'departure') {
+        const val = departureDateInput.value;
+        if (val) {
+            departureDate = val;
+            searchDateValue.textContent = formatDisplayDate(val);
+            searchDateValue.classList.add('text-gray-900'); // Update text color if needed
+            searchDateValue.classList.remove('text-gray-400'); // Remove placeholder color if used
+        }
+    } else if (type === 'return') {
+        const val = returnDateInput.value;
+        if (val) {
+            returnDate = val;
+            searchReturnDateValue.textContent = formatDisplayDate(val);
+            // Hide "Add Return", Show "Date Display"
+            addReturnBtnContainer.classList.add('hidden');
+            returnDateDisplay.classList.remove('hidden');
         }
     }
-
-    // closeDateModal(); // Do not close immediately to allow return date selection if needed.
-    // Or close if it's departure date... 
-    // User requirement: "Calendar shows in window" -> implies updating the value in the search bar immediately.
-    // If type is 'departure' and category supports return, maybe keep open?
-    // But for MVP, let's update values immediately. User can manually close or click outside.
-
 }
+
+// Old confirm logic removed, replaced by direct handleDateChange
+// function confirmDateSelection() ... removed
 
 function formatDisplayDate(dateStr) {
     const d = new Date(dateStr);
@@ -313,15 +264,7 @@ function formatDisplayDate(dateStr) {
 if (addReturnBtnContainer) {
     addReturnBtnContainer.addEventListener('click', (e) => {
         e.stopPropagation(); // Prevent bubbling to parent click
-        openDateModal();
-        // Focus return input
-        setTimeout(() => {
-            const retInput = document.getElementById('return-date-input');
-            retInput.focus();
-            try {
-                retInput.showPicker();
-            } catch (e) { }
-        }, 100);
+        openDatePicker('return');
     });
 }
 
