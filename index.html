@@ -89,12 +89,63 @@
                 class="text-lg sm:text-xl lg:text-2xl text-white/95 mb-8 sm:mb-10 drop-shadow-md font-medium px-2 leading-relaxed">
                 테마파크, 스키장, 콘서트장 가는 길 – 고민하지 말고 떠나보세요
             </p>
-            <div class="flex gap-3 sm:gap-4 justify-center flex-wrap px-2">
-                <button class="btn-primary">
-                    내 이동편 찾기
-                </button>
-                <button class="btn-secondary">
-                    간편 견적 문의
+            <!-- Search Bar Component -->
+            <div
+                class="bg-white rounded-[2rem] p-2 pr-2 sm:pr-3 flex flex-col sm:flex-row shadow-2xl max-w-4xl mx-auto mt-8 sm:mt-12 animate-fade-in-up items-stretch sm:items-center">
+
+                <!-- Destination Section -->
+                <div class="flex-1 px-4 sm:px-8 py-3 sm:py-4 border-b sm:border-b-0 sm:border-r border-gray-100 cursor-pointer hover:bg-gray-50 transition rounded-[1.5rem] sm:rounded-l-[1.5rem] sm:rounded-r-none relative group"
+                    onclick="openDestinationModal()">
+                    <div class="flex flex-col items-start">
+                        <span
+                            class="text-[0.65rem] sm:text-xs font-black text-gray-400 tracking-widest uppercase mb-0.5 sm:mb-1">Where
+                            to?</span>
+                        <div class="flex items-center gap-2 w-full">
+                            <i data-lucide="map-pin" class="w-4 h-4 text-primary shrink-0 relative top-[1px]"></i>
+                            <span id="search-destination-value"
+                                class="text-base sm:text-lg font-bold text-gray-800 truncate">목적지만 정하세요</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Date Section -->
+                <div class="flex-[1.2] px-4 sm:px-8 py-3 sm:py-4 cursor-pointer hover:bg-gray-50 transition rounded-[1.5rem] sm:rounded-none relative group"
+                    onclick="openDateModal()">
+                    <div class="flex flex-col items-start w-full">
+                        <span
+                            class="text-[0.65rem] sm:text-xs font-black text-gray-400 tracking-widest uppercase mb-0.5 sm:mb-1">When?</span>
+                        <div class="flex items-center w-full">
+                            <div class="flex items-center gap-2 flex-1">
+                                <i data-lucide="calendar" class="w-4 h-4 text-primary shrink-0 relative top-[1px]"></i>
+                                <span id="search-date-value"
+                                    class="text-base sm:text-lg font-bold text-gray-800 truncate">가는 날 선택</span>
+                            </div>
+
+                            <!-- Return Date / Add Return Button (Hidden by default) -->
+                            <div id="return-section" class="hidden pl-4 border-l border-gray-200 ml-4 flex-1">
+                                <div class="flex items-center gap-2" id="add-return-btn-container">
+                                    <i data-lucide="plus-circle" class="w-4 h-4 text-gray-400"></i>
+                                    <span
+                                        class="text-xs sm:text-sm font-bold text-gray-500 hover:text-primary transition">오는
+                                        편 추가</span>
+                                </div>
+                                <div id="return-date-display" class="hidden flex items-center gap-2">
+                                    <i data-lucide="calendar-check"
+                                        class="w-4 h-4 text-secondary shrink-0 relative top-[1px]"></i>
+                                    <span id="search-return-date-value"
+                                        class="text-base sm:text-lg font-bold text-gray-800 truncate">오는 날 선택</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Search Button -->
+                <button
+                    class="bg-gradient-to-r from-[#4ECDC4] to-[#3EB9B1] text-white rounded-[1.5rem] px-6 sm:px-10 py-3 sm:py-4 font-black shadow-lg hover:shadow-xl hover:translate-y-[-2px] transition-all flex items-center justify-center gap-2 sm:ml-2 mt-2 sm:mt-0 active:scale-95"
+                    onclick="performSearch()">
+                    <span class="whitespace-nowrap text-sm sm:text-base">내 이동편 찾기</span>
+                    <i data-lucide="search" class="w-4 h-4 sm:w-5 sm:h-5"></i>
                 </button>
             </div>
         </div>
@@ -428,7 +479,73 @@
         </ul>
     </div>
 
-    <!-- Scripts -->
+    <!-- Destination Selection Modal -->
+    <div id="destination-modal"
+        class="fixed inset-0 bg-black/50 z-[100] hidden items-end sm:items-center justify-center animate-fade-in backdrop-blur-sm"
+        onclick="closeDestinationModal(event)">
+        <div class="bg-white w-full sm:w-[32rem] sm:rounded-3xl rounded-t-3xl p-6 sm:p-8 max-h-[85vh] overflow-y-auto shadow-2xl transform transition-transform duration-300 translate-y-full sm:translate-y-0 scale-95 sm:scale-100 opacity-0 sm:opacity-100"
+            id="destination-modal-content">
+            <div class="flex justify-between items-center mb-6">
+                <h3 class="text-xl font-black text-gray-900">어디로 떠나시나요?</h3>
+                <button onclick="closeDestinationModal()" class="p-2 hover:bg-gray-100 rounded-full transition"><i
+                        data-lucide="x" class="w-6 h-6 text-gray-400"></i></button>
+            </div>
+
+            <!-- Step 1: Category Selection -->
+            <div id="dest-step-1" class="grid grid-cols-2 gap-4">
+                <div class="category-card" onclick="selectCategory('theme-park')">
+                    <div
+                        class="p-4 bg-gray-50 rounded-2xl hover:bg-orange-50 hover:border-orange-200 border border-transparent transition cursor-pointer text-center group">
+                        <i data-lucide="castle"
+                            class="w-8 h-8 mx-auto mb-3 text-gray-400 group-hover:text-secondary transition"></i>
+                        <span class="font-bold text-gray-700 group-hover:text-gray-900 block">테마파크</span>
+                    </div>
+                </div>
+                <!-- More categories will be populated by JS or hardcoded here for MVP -->
+            </div>
+
+            <!-- Step 2: Sub-item Selection (Hidden initially) -->
+            <div id="dest-step-2" class="hidden">
+                <button onclick="backToCategories()"
+                    class="mb-4 text-sm font-bold text-gray-500 hover:text-gray-900 flex items-center gap-1"><i
+                        data-lucide="arrow-left" class="w-4 h-4"></i> 카테고리 다시 선택</button>
+                <h4 id="selected-category-title" class="text-sm font-black text-primary uppercase tracking-widest mb-4">
+                    CATEGORY NAME</h4>
+                <div id="sub-item-list" class="space-y-2">
+                    <!-- Items populated by JS -->
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Date Selection Modal (Simple HTML5 date input wrapper for MVP/Mobile-friendly) -->
+    <div id="date-modal"
+        class="fixed inset-0 bg-black/50 z-[100] hidden items-center justify-center animate-fade-in backdrop-blur-sm"
+        onclick="closeDateModal(event)">
+        <div class="bg-white w-[90%] sm:w-[24rem] rounded-3xl p-6 shadow-2xl" id="date-modal-content">
+            <div class="flex justify-between items-center mb-6">
+                <h3 class="text-xl font-black text-gray-900">언제 떠나시나요?</h3>
+                <button onclick="closeDateModal()" class="p-2 hover:bg-gray-100 rounded-full transition"><i
+                        data-lucide="x" class="w-6 h-6 text-gray-400"></i></button>
+            </div>
+            <div class="space-y-4">
+                <div>
+                    <label class="block text-xs font-black text-gray-400 uppercase tracking-widest mb-2">가는 날</label>
+                    <input type="date" id="departure-date-input"
+                        class="w-full p-4 bg-gray-50 rounded-xl font-bold text-gray-800 border-none focus:ring-2 focus:ring-primary outline-none"
+                        onchange="handleDateChange('departure')">
+                </div>
+                <div id="modal-return-date-container" class="hidden">
+                    <label class="block text-xs font-black text-gray-400 uppercase tracking-widest mb-2">오는 날
+                        (선택)</label>
+                    <input type="date" id="return-date-input"
+                        class="w-full p-4 bg-gray-50 rounded-xl font-bold text-gray-800 border-none focus:ring-2 focus:ring-secondary outline-none"
+                        onchange="handleDateChange('return')">
+                </div>
+                <button onclick="confirmDateSelection()" class="w-full btn-primary mt-4">선택 완료</button>
+            </div>
+        </div>
+    </div>
     <script src="script.js"></script>
 </body>
 
