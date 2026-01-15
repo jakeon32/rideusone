@@ -565,14 +565,23 @@ body {
 /* Flatpickr Custom Customization */
 .flatpickr-calendar {
   border-radius: 1.5rem !important;
-  box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 8px 10px -6px rgba(0, 0, 0, 0.1) !important;
+  /* Stronger shadow for depth and spacing from background */
+  box-shadow: 0 20px 40px -5px rgba(0, 0, 0, 0.2), 0 10px 20px -5px rgba(0, 0, 0, 0.1) !important;
   border: none !important;
-  padding: 1rem !important;
+  padding: 1.25rem !important;
   font-family: 'Pretendard', sans-serif !important;
+  margin-bottom: 1rem !important;
+  /* Space when opening above */
+}
+
+/* Remove arrow or adjust if needed */
+.flatpickr-calendar::before,
+.flatpickr-calendar::after {
+  display: none !important;
 }
 
 .flatpickr-months {
-  margin-bottom: 0.5rem !important;
+  margin-bottom: 0.75rem !important;
 }
 
 .flatpickr-month {
@@ -580,23 +589,37 @@ body {
 }
 
 .flatpickr-current-month {
-  font-size: 1.1rem !important;
-  font-weight: 700 !important;
+  font-size: 1.2rem !important;
+  font-weight: 800 !important;
+  padding-top: 0 !important;
 }
 
 .flatpickr-weekday {
   font-weight: 700 !important;
-  color: #94a3b8 !important;
+  color: #cbd5e1 !important;
+  font-size: 0.9rem !important;
 }
 
+/* Remove borders and ensure clean grid */
 .flatpickr-day {
   border-radius: 0.75rem !important;
+  border: 1px solid transparent !important;
+  /* Ensure no visible border */
   font-weight: 600 !important;
-  font-size: 1rem !important;
+  font-size: 1.05rem !important;
   line-height: 40px !important;
   margin-top: 4px !important;
+  box-shadow: none !important;
+  /* Remove any default shadow */
 }
 
+/* Hover effect */
+.flatpickr-day:hover {
+  background: #f1f5f9 !important;
+  border-color: transparent !important;
+}
+
+/* Selected state */
 .flatpickr-day.selected,
 .flatpickr-day.startRange,
 .flatpickr-day.endRange,
@@ -617,19 +640,32 @@ body {
 .flatpickr-day.endRange.nextMonthDay {
   background: #4ECDC4 !important;
   border-color: #4ECDC4 !important;
+  box-shadow: 0 4px 6px -1px rgba(78, 205, 196, 0.3) !important;
+  /* Subtle glow for selected */
+  color: white !important;
 }
 
 .flatpickr-day.today {
-  border-color: #4ECDC4 !important;
+  border-color: transparent !important;
+  background: #f8fafc !important;
+  color: #4ECDC4 !important;
+  font-weight: 900 !important;
 }
 
-.flatpickr-day:hover {
+.flatpickr-day.today:hover {
   background: #e2e8f0 !important;
-  border-color: #e2e8f0 !important;
+  color: #4ECDC4 !important;
 }
 
-/* Hide arrow icons if needed, or style them */
+/* Navigation Icons */
 .flatpickr-prev-month svg,
 .flatpickr-next-month svg {
-  fill: #64748b !important;
+  fill: #94a3b8 !important;
+  width: 14px !important;
+  height: 14px !important;
+}
+
+.flatpickr-prev-month:hover svg,
+.flatpickr-next-month:hover svg {
+  fill: #4ECDC4 !important;
 }

@@ -153,6 +153,7 @@ function initPickers() {
     departurePicker = flatpickr(departureDateInput, {
         dateFormat: "Y-m-d",
         minDate: "today",
+        position: "above",
         onChange: function (selectedDates, dateStr, instance) {
             handleDateChange('departure', dateStr);
             if (returnPicker) {
@@ -164,6 +165,7 @@ function initPickers() {
     returnPicker = flatpickr(returnDateInput, {
         dateFormat: "Y-m-d",
         minDate: "today",
+        position: "above",
         onChange: function (selectedDates, dateStr, instance) {
             handleDateChange('return', dateStr);
         }
