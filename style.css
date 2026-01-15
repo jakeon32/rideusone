@@ -244,6 +244,8 @@ body {
 
 /* ===== Featured Card ===== */
 .featured-card {
+  width: 82vw;
+  max-width: 82vw;
   min-width: 82vw;
   background-color: white;
   border-radius: 1rem;
@@ -260,6 +262,8 @@ body {
 
 @media (min-width: 640px) {
   .featured-card {
+    width: auto;
+    max-width: none;
     min-width: 320px;
   }
 }
