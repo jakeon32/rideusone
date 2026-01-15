@@ -139,9 +139,35 @@ const modalReturnDateContainer = document.getElementById('modal-return-date-cont
 const departureDateInput = document.getElementById('departure-date-input');
 const returnDateInput = document.getElementById('return-date-input');
 
+// Flatpickr instances
+let departurePicker;
+let returnPicker;
+
 // Init
 function initSearch() {
+    initPickers();
     renderCategories();
+}
+
+function initPickers() {
+    departurePicker = flatpickr(departureDateInput, {
+        dateFormat: "Y-m-d",
+        minDate: "today",
+        onChange: function (selectedDates, dateStr, instance) {
+            handleDateChange('departure', dateStr);
+            if (returnPicker) {
+                returnPicker.set('minDate', dateStr);
+            }
+        }
+    });
+
+    returnPicker = flatpickr(returnDateInput, {
+        dateFormat: "Y-m-d",
+        minDate: "today",
+        onChange: function (selectedDates, dateStr, instance) {
+            handleDateChange('return', dateStr);
+        }
+    });
 }
 
 function renderCategories() {
@@ -156,23 +182,50 @@ function renderCategories() {
     lucide.createIcons();
 }
 
+// Modal Functions
+function openDestinationModal() {
+    destinationModal.classList.remove('hidden');
+    destinationModal.classList.add('flex');
+    setTimeout(() => {
+        const content = document.getElementById('destination-modal-content');
+        if (content) {
+            content.classList.remove('translate-y-full', 'opacity-0', 'scale-95');
+            content.classList.add('translate-y-0', 'opacity-100', 'scale-100');
+        }
+    }, 10);
+}
 
+function closeDestinationModal(e) {
+    if (e && e.target !== destinationModal && !e.target.closest('[onclick="closeDestinationModal()"]')) return;
+
+    const content = document.getElementById('destination-modal-content');
+    if (content) {
+        content.classList.remove('translate-y-0', 'opacity-100', 'scale-100');
+        content.classList.add('translate-y-full', 'opacity-0', 'scale-95');
+    }
+
+    setTimeout(() => {
+        destinationModal.classList.add('hidden');
+        destinationModal.classList.remove('flex');
+    }, 300);
+}
+
+function backToCategories() {
+    destStep2.classList.add('hidden');
+    destStep1.classList.remove('hidden');
+}
 
 function openDatePicker(type) {
-    const input = type === 'departure' ? departureDateInput : returnDateInput;
-    if (!input) return;
-
-    // For return date, if container is hidden/pointer-events issues, we might need to handle visibility?
-    // But structure handles it.
-
-    try {
-        input.showPicker();
-    } catch (e) {
-        console.warn('showPicker not supported, fallback to focus/click');
-        input.focus();
-        input.click();
+    if (type === 'departure' && departurePicker) {
+        departurePicker.open(); // Flatpickr open
+    } else if (type === 'return' && returnPicker) {
+        returnPicker.open(); // Flatpickr open
     }
 }
+
+
+
+
 
 // Selection Logic
 function selectCategory(key) {
@@ -229,21 +282,20 @@ function updateReturnSectionVisibility() {
 }
 
 // Date Logic
-function handleDateChange(type) {
+function handleDateChange(type, dateStr) {
     if (type === 'departure') {
-        const val = departureDateInput.value;
+        const val = dateStr;
         if (val) {
             departureDate = val;
             searchDateValue.textContent = formatDisplayDate(val);
-            searchDateValue.classList.add('text-gray-900'); // Update text color if needed
-            searchDateValue.classList.remove('text-gray-400'); // Remove placeholder color if used
+            searchDateValue.classList.add('text-gray-900');
+            searchDateValue.classList.remove('text-gray-400');
         }
     } else if (type === 'return') {
-        const val = returnDateInput.value;
+        const val = dateStr;
         if (val) {
             returnDate = val;
             searchReturnDateValue.textContent = formatDisplayDate(val);
-            // Hide "Add Return", Show "Date Display"
             addReturnBtnContainer.classList.add('hidden');
             returnDateDisplay.classList.remove('hidden');
         }
