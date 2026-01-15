@@ -80,7 +80,8 @@
         </div>
 
         <!-- Content -->
-        <div class="relative z-10 text-center px-[1.2rem] sm:px-6 lg:px-8 max-w-5xl mt-12 sm:mt-16 w-full">
+        <!-- Adjusted for vertical centering: removed mt-12 sm:mt-16 to rely on flex centering -->
+        <div class="relative z-10 text-center px-[1.2rem] sm:px-6 lg:px-8 max-w-5xl w-full">
             <h1 class="mb-5 sm:mb-7 drop-shadow-lg flex justify-center">
                 <img src="./images/herotext.png" alt="여행이 필요한 순간, 가장 편안한 이동을 선물합니다"
                     class="max-w-full h-auto brightness-0 invert opacity-90 w-full" />
@@ -542,7 +543,7 @@
                         class="w-full p-4 bg-gray-50 rounded-xl font-bold text-gray-800 border-none focus:ring-2 focus:ring-secondary outline-none"
                         onchange="handleDateChange('return')">
                 </div>
-                <button onclick="confirmDateSelection()" class="w-full btn-primary mt-4">선택 완료</button>
+                <!-- Button removed for direct selection UX -->
             </div>
         </div>
     </div>

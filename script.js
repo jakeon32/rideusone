@@ -173,13 +173,12 @@ function backToCategories() {
 
 function openDateModal() {
     // Show/Hide return date input based on category
-    if (currentCategory === 'ski-resort' || currentCategory === 'concert') {
+    if (currentCategory === 'ski-resort' || currentCategory === 'concert' || currentCategory === 'theme-park') {
         modalReturnDateContainer.classList.remove('hidden');
     } else {
         modalReturnDateContainer.classList.add('hidden');
-        // If hidden, clear return date value if user didn't explicitly ask for it? 
-        // For now, keep it simple. If category changes, UI updates logic in confirm.
     }
+
 
     // Pre-fill
     document.getElementById('departure-date-input').value = departureDate || '';
@@ -187,6 +186,22 @@ function openDateModal() {
 
     dateModal.classList.remove('hidden');
     dateModal.classList.add('flex');
+
+    // UX: Immediate focus and picker
+    const depInput = document.getElementById('departure-date-input');
+    // If opening from "Add Return", focus return input, else focus departure
+    // Simple heuristic: if departure is already set and we just opened, maybe focus return?
+    // But usually this opens from "When?" click.
+    setTimeout(() => {
+        // If we want to support "Add Return" click passing a flag, we'd need to change signature.
+        // For now, let's just default to departure input unless we add logic.
+        depInput.focus();
+        try {
+            depInput.showPicker();
+        } catch (e) {
+            console.log('showPicker not supported');
+        }
+    }, 100);
 }
 
 function closeDateModal(e) {
@@ -231,7 +246,7 @@ function selectSubItem(item) {
 }
 
 function updateReturnSectionVisibility() {
-    if (currentCategory === 'ski-resort' || currentCategory === 'concert') {
+    if (currentCategory === 'ski-resort' || currentCategory === 'concert' || currentCategory === 'theme-park') {
         returnSection.classList.remove('hidden');
         // Initial state: "Add Return" is text, button is shown. 
         // returnDateDisplay is hidden unless returnDate is set.
@@ -251,7 +266,7 @@ function updateReturnSectionVisibility() {
 
 // Date Logic
 function handleDateChange(type) {
-    // Just store value, confirm on button click
+    confirmDateSelection();
 }
 
 function confirmDateSelection() {
@@ -264,7 +279,7 @@ function confirmDateSelection() {
         searchDateValue.classList.add('text-primary');
     }
 
-    if (retInput && (currentCategory === 'ski-resort' || currentCategory === 'concert')) {
+    if (retInput && (currentCategory === 'ski-resort' || currentCategory === 'concert' || currentCategory === 'theme-park')) {
         returnDate = retInput;
         searchReturnDateValue.textContent = formatDisplayDate(retInput);
         searchReturnDateValue.classList.add('text-secondary');
@@ -279,7 +294,12 @@ function confirmDateSelection() {
         }
     }
 
-    closeDateModal();
+    // closeDateModal(); // Do not close immediately to allow return date selection if needed.
+    // Or close if it's departure date... 
+    // User requirement: "Calendar shows in window" -> implies updating the value in the search bar immediately.
+    // If type is 'departure' and category supports return, maybe keep open?
+    // But for MVP, let's update values immediately. User can manually close or click outside.
+
 }
 
 function formatDisplayDate(dateStr) {
@@ -294,7 +314,14 @@ if (addReturnBtnContainer) {
     addReturnBtnContainer.addEventListener('click', (e) => {
         e.stopPropagation(); // Prevent bubbling to parent click
         openDateModal();
-        // Focus return input?
+        // Focus return input
+        setTimeout(() => {
+            const retInput = document.getElementById('return-date-input');
+            retInput.focus();
+            try {
+                retInput.showPicker();
+            } catch (e) { }
+        }, 100);
     });
 }
 
