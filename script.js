@@ -118,7 +118,7 @@ const categories = {
         label: '쇼핑',
         icon: 'shopping-bag',
         bg: 'bg-green-50',
-        items: ['신세계 사이먼 파주', '신세계 사이먼 여주', '롯데 프리미엄 이천']
+        items: ['신세계 사이먼 파주', '신세계 사이먼 여주', '신세계 사이먼 시흥']
     },
     'custom-tour': {
         label: '맞춤투어',
