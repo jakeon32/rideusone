@@ -1,63 +1,77 @@
 // Initialize Lucide Icons
 lucide.createIcons();
 
-// Sticky Header
-const nav = document.getElementById('main-nav');
-const logoImg = document.getElementById('main-logo');
-const navLinks = document.getElementById('nav-links');
-const langSelector = document.getElementById('lang-selector');
-const menuIcon = document.getElementById('menu-icon');
-
-
 // Sticky Header & Navigation Logic
 let lastScrollY = window.scrollY;
 
-window.addEventListener('scroll', () => {
-    const currentScrollY = window.scrollY;
+function initStickyHeader() {
+    const nav = document.getElementById('main-nav');
+    const logoImg = document.getElementById('main-logo');
+    const navLinks = document.getElementById('nav-links');
+    const langSelector = document.getElementById('lang-selector');
+    const menuIcon = document.getElementById('menu-icon');
 
-    // GNB Auto-Hide Logic
-    if (currentScrollY > lastScrollY && currentScrollY > 100) {
-        // Scrolling Down & Past top: Hide GNB
-        nav.classList.add('-translate-y-full');
-    } else {
-        // Scrolling Up or at Top: Show GNB
-        nav.classList.remove('-translate-y-full');
-    }
+    if (!nav) return;
 
-    // Sticky Header Style Logic (Only applies when GNB is visible)
-    if (currentScrollY > 20) {
-        nav.classList.add('bg-white', 'shadow-md');
-        nav.classList.remove('bg-transparent');
+    window.addEventListener('scroll', () => {
+        const currentScrollY = window.scrollY;
 
-        // Sticky State: Original Color (Remove filters)
-        logoImg.classList.remove('brightness-0', 'invert');
+        // GNB Auto-Hide Logic
+        if (currentScrollY > lastScrollY && currentScrollY > 100) {
+            // Scrolling Down & Past top: Hide GNB
+            nav.classList.add('-translate-y-full');
+        } else {
+            // Scrolling Up or at Top: Show GNB
+            nav.classList.remove('-translate-y-full');
+        }
 
-        navLinks.classList.remove('text-white');
-        navLinks.classList.add('text-slate-600');
+        // Sticky Header Style Logic (Only applies when GNB is visible)
+        if (currentScrollY > 20) {
+            nav.classList.add('bg-white', 'shadow-md');
+            nav.classList.remove('bg-transparent');
 
-        langSelector.classList.remove('border-white/30', 'text-white', 'hover:bg-white/10');
-        langSelector.classList.add('border-slate-200', 'text-slate-600', 'hover:bg-slate-50');
+            // Sticky State: Original Color (Remove filters)
+            if (logoImg) logoImg.classList.remove('brightness-0', 'invert');
+            if (navLinks) {
+                navLinks.classList.remove('text-white');
+                navLinks.classList.add('text-slate-600');
+            }
+            if (langSelector) {
+                langSelector.classList.remove('border-white/30', 'text-white', 'hover:bg-white/10');
+                langSelector.classList.add('border-slate-200', 'text-slate-600', 'hover:bg-slate-50');
+            }
+            if (menuIcon) {
+                menuIcon.classList.remove('text-white');
+                menuIcon.classList.add('text-slate-900');
+            }
+        } else {
+            nav.classList.remove('bg-white', 'shadow-md');
+            nav.classList.add('bg-transparent');
 
-        menuIcon.classList.remove('text-white');
-        menuIcon.classList.add('text-slate-900');
-    } else {
-        nav.classList.remove('bg-white', 'shadow-md');
-        nav.classList.add('bg-transparent');
+            // Hero State: White Color (Apply filters)
+            if (logoImg) logoImg.classList.add('brightness-0', 'invert');
+            if (navLinks) {
+                navLinks.classList.add('text-white');
+                navLinks.classList.remove('text-slate-600');
+            }
+            if (langSelector) {
+                langSelector.classList.add('border-white/30', 'text-white', 'hover:bg-white/10');
+                langSelector.classList.remove('border-slate-200', 'text-slate-600', 'hover:bg-slate-50');
+            }
+            if (menuIcon) {
+                menuIcon.classList.add('text-white');
+                menuIcon.classList.remove('text-slate-900');
+            }
+        }
 
-        // Hero State: White Color (Apply filters)
-        logoImg.classList.add('brightness-0', 'invert');
+        lastScrollY = currentScrollY;
+    });
+}
 
-        navLinks.classList.add('text-white');
-        navLinks.classList.remove('text-slate-600');
-
-        langSelector.classList.add('border-white/30', 'text-white', 'hover:bg-white/10');
-        langSelector.classList.remove('border-slate-200', 'text-slate-600', 'hover:bg-slate-50');
-
-        menuIcon.classList.add('text-white');
-        menuIcon.classList.remove('text-slate-900');
-    }
-
-    lastScrollY = currentScrollY;
+// Initialize after DOM is ready (components.js renders nav first)
+document.addEventListener('DOMContentLoaded', () => {
+    // Small delay to ensure components.js has rendered
+    setTimeout(initStickyHeader, 0);
 });
 
 // Mobile Menu

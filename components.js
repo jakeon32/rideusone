@@ -21,7 +21,7 @@ const menuItems = [
 
 // 탭 데이터
 const tabItems = [
-    { href: 'index.html', label: '전체' },
+    { href: 'index.html', label: '홈' },
     { href: 'theme-park.html', label: '테마파크' },
     { href: 'ski-resort.html', label: '스키장' },
     { href: 'shopping.html', label: '쇼핑' },
