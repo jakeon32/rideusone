@@ -381,5 +381,5 @@ function initHeroSlider() {
         // Next slide fade in
         slides[currentIndex].classList.remove('opacity-0');
         slides[currentIndex].classList.add('opacity-90');
-    }, 3000);
+    }, 5000);
 }
