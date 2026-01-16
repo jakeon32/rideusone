@@ -95,16 +95,10 @@ const categories = {
         items: ['에버랜드', '롯데월드', '경주월드', '이월드', '레고랜드']
     },
     'ski-resort': {
-        label: '스키리조트',
+        label: '스키장',
         icon: 'snowflake',
         bg: 'bg-blue-50',
         items: ['하이원리조트', '비발디파크', '휘닉스 평창', '용평리조트', '엘리시안 강촌', '알펜시아']
-    },
-    'concert': {
-        label: '공연/이벤트',
-        icon: 'music',
-        bg: 'bg-purple-50',
-        items: ['인스파이어 아레나', 'KSPO DOME', '고척 스카이돔', '잠실 주경기장']
     },
     'shopping': {
         label: '쇼핑',
@@ -113,10 +107,16 @@ const categories = {
         items: ['신세계 사이먼 파주', '신세계 사이먼 여주', '롯데 프리미엄 이천']
     },
     'custom-tour': {
-        label: '커스텀 투어',
+        label: '맞춤투어',
         icon: 'map',
         bg: 'bg-yellow-50',
         items: ['제주 프라이빗 투어', '강원도 힐링 투어', '부산 식도락 투어']
+    },
+    'concert': {
+        label: '콘서트',
+        icon: 'music',
+        bg: 'bg-purple-50',
+        items: ['인스파이어 아레나', 'KSPO DOME', '고척 스카이돔', '잠실 주경기장']
     }
 };
 
